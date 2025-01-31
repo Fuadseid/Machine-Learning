@@ -1,3 +1,4 @@
+
 # Diabetes Prediction Project
 
 This project aims to predict whether a person has diabetes based on various diagnostic features, such as age, BMI, blood pressure, glucose levels, etc. The project uses machine learning to build a classifier that can predict the likelihood of diabetes in a given individual.
@@ -16,7 +17,7 @@ This project aims to predict whether a person has diabetes based on various diag
 11. Acknowledgements
 
 ## Project Overview
-This project uses the Pima Indians Diabetes Dataset to build a machine learning model that predicts whether a patient has diabetes based on diagnostic factors. The dataset includes information like glucose levels, BMI, age, etc., and the model is trained using Logistic Regression, Random Forest, and SVM classifiers. The goal is to predict the Outcome variable, where 0 means no diabetes, and 1 means the patient has diabetes.
+This project uses the Pima Indians Diabetes Dataset to build a machine learning model that predicts whether a patient has diabetes based on diagnostic factors. The dataset includes information like glucose levels, BMI, age, etc., and the model is trained using **K-Nearest Neighbors (KNN)**, a popular supervised learning algorithm. The goal is to predict the Outcome variable, where 0 means no diabetes, and 1 means the patient has diabetes.
 
 ## Getting Started
 Follow these steps to get the project up and running on your local machine.
@@ -100,12 +101,12 @@ The dataset contains the following columns:
 9. **Outcome**: Target variable (1 = Has diabetes, 0 = No diabetes).
 
 ## Model Explanation
-The project uses several machine learning models to predict diabetes:
-1. **Logistic Regression**: A basic linear classifier, suitable for binary classification tasks.
-2. **Random Forest Classifier**: An ensemble method that builds multiple decision trees and merges their results.
-3. **Support Vector Machine (SVM)**: A classifier that finds the optimal hyperplane to separate classes.
+The project uses **K-Nearest Neighbors (KNN)** to predict diabetes:
+- **KNN Classifier**: A non-parametric algorithm used for classification, where the class of a sample is determined by the majority class of its nearest neighbors. It is a simple yet effective model for classification tasks.
+  - **K** represents the number of nearest neighbors considered.
+  - **Distance Metric**: Typically Euclidean distance is used, but it can be customized.
 
-You can experiment with different models to find the best-performing one for this dataset.
+You can experiment with different values of **K** to find the best-performing model for this dataset.
 
 ## Evaluation Metrics
 We use several metrics to evaluate the model’s performance:
