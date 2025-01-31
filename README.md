@@ -117,8 +117,7 @@ We use several metrics to evaluate the model’s performance:
 - **Confusion Matrix**: A table used to describe the performance of a classification model.
 
 ## Deployment
-The model has been deployed on **Render Cloud**, and you can now access it via the following link:
-[Diabetes Prediction API](https://machine-learning-1-yl7v.onrender.com/predict)
+The model has been deployed on **Render Cloud**,
 
 ### How to Use the Cloud-Deployed API
 You can test the API by sending a POST request with patient data. Below are the steps to test it using **Postman** or any similar tool:
