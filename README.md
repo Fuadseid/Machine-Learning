@@ -1,136 +1,126 @@
 
+
 # Diabetes Prediction Project
 
-This project aims to predict whether a person has diabetes based on various diagnostic features, such as age, BMI, blood pressure, glucose levels, etc. The project uses machine learning to build a classifier that can predict the likelihood of diabetes in a given individual.
+This project predicts whether an individual has diabetes based on various diagnostic features such as age, BMI, blood pressure, and glucose levels. The model is built using **K-Nearest Neighbors (KNN)** and is deployed with a frontend interface for better user interaction.
 
 ## Table of Contents
-1. Project Overview
-2. Getting Started
-3. Prerequisites
-4. Installing Dependencies
-5. Running the Project
-6. Data Description
-7. Model Explanation
-8. Evaluation Metrics
-9. Deployment
-10. Limitations and Future Improvements
-11. Acknowledgements
+1. Project Overview  
+2. Getting Started  
+3. Prerequisites  
+4. Installing Dependencies  
+5. Running the Project  
+6. Data Description  
+7. Model Explanation  
+8. Evaluation Metrics  
+9. Deployment  
+10. Limitations and Future Improvements  
+11. Acknowledgements  
+
+---
 
 ## Project Overview
-This project uses the Pima Indians Diabetes Dataset to build a machine learning model that predicts whether a patient has diabetes based on diagnostic factors. The dataset includes information like glucose levels, BMI, age, etc., and the model is trained using **K-Nearest Neighbors (KNN)**, a popular supervised learning algorithm. The goal is to predict the Outcome variable, where 0 means no diabetes, and 1 means the patient has diabetes.
+The project utilizes the **Pima Indians Diabetes Dataset** to train a **K-Nearest Neighbors (KNN)** model for predicting diabetes. The target variable (Outcome) is binary, where **1 indicates diabetes** and **0 indicates no diabetes**.  
+
+To enhance accessibility, a **React-based frontend** has been developed, enabling users to interact easily with the model.
+
+---
 
 ## Getting Started
-Follow these steps to get the project up and running on your local machine.
 
 ### Step 1: Clone the Repository
-First, clone the repository to your local machine.
 ```
 git clone https://github.com/yourusername/diabetes-prediction.git
 cd diabetes-prediction
 ```
 
 ### Step 2: Download the Dataset
-Download the Pima Indians Diabetes Dataset from the following link:
-- **Dataset:** diabetes.csv
+- Dataset: **diabetes.csv**  
+Ensure the dataset is placed in the project directory before proceeding.
 
-Ensure the dataset is placed in the project folder before proceeding.
+---
 
 ## Prerequisites
-Ensure you have Python 3.6+ installed on your machine. You can check your Python version by running:
+Ensure Python **3.6+** is installed:
 ```
 python --version
 ```
-You will also need to install the necessary Python libraries to run the project.
 
-## Installing Dependencies
-Create a virtual environment (optional, but recommended) and activate it:
-
-**On Windows:**
-```
-python -m venv env
-.\env\Scripts\activate
-```
-
-**On Mac/Linux:**
-```
-python3 -m venv env
-source env/bin/activate
-```
-
-Then install the required dependencies:
-```
-pip install -r requirements.txt
-```
-Alternatively, you can install the necessary libraries individually using pip:
+Required Python libraries:
 ```
 pip install pandas numpy scikit-learn seaborn matplotlib fastapi uvicorn
 ```
 
+---
+
 ## Running the Project
 
-### 1. Run the Jupyter Notebook
-You can run the project directly in a Jupyter notebook. If you don’t have Jupyter installed, install it with:
+### 1. Run Jupyter Notebook (For EDA & Model Training)
 ```
 pip install notebook
-```
-Then launch Jupyter Notebook:
-```
 jupyter notebook
 ```
-Open the notebook `diabetes_prediction.ipynb` and follow the steps to load the dataset, preprocess the data, train the model, and evaluate its performance.
+Open `diabetes_prediction.ipynb` to execute model training and evaluation.
 
-### 2. Run the API (Optional)
-To deploy the trained model as an API using FastAPI, follow these steps:
-- Make sure the model is saved (using joblib or pickle).
-- Run the FastAPI server:
+### 2. Run the API (For Deployment)
+Run the FastAPI server:
 ```
-uvicorn app:app --reload
+uvicorn main:app --reload
 ```
-The API will be available at `http://127.0.0.1:8000/`. You can test it by sending a POST request with patient data using tools like Postman or cURL.
+API available at: `http://127.0.0.1:8000/`
+
+---
 
 ## Data Description
-The dataset contains the following columns:
-1. **Pregnancies**: Number of times the patient has been pregnant.
-2. **Glucose**: Plasma glucose concentration in an oral glucose tolerance test.
-3. **BloodPressure**: Diastolic blood pressure (mm Hg).
-4. **SkinThickness**: Triceps skinfold thickness (mm).
-5. **Insulin**: 2-Hour serum insulin (mu U/ml).
-6. **BMI**: Body mass index (weight in kg/(height in m)^2).
-7. **DiabetesPedigreeFunction**: A function that represents the genetic relationship to diabetes.
-8. **Age**: Age of the patient.
-9. **Outcome**: Target variable (1 = Has diabetes, 0 = No diabetes).
+
+The dataset consists of **768 instances** with the following features:
+
+- **Pregnancies**: Number of times pregnant  
+- **Glucose**: Plasma glucose concentration  
+- **BloodPressure**: Diastolic blood pressure (mm Hg)  
+- **SkinThickness**: Triceps skinfold thickness (mm)  
+- **Insulin**: 2-hour serum insulin (µU/mL)  
+- **BMI**: Body mass index  
+- **DiabetesPedigreeFunction**: Diabetes likelihood based on family history  
+- **Age**: Age of the individual  
+- **Outcome**: **1 = Diabetes, 0 = No diabetes**  
+
+---
 
 ## Model Explanation
-The project uses **K-Nearest Neighbors (KNN)** to predict diabetes:
-- **KNN Classifier**: A non-parametric algorithm used for classification, where the class of a sample is determined by the majority class of its nearest neighbors. It is a simple yet effective model for classification tasks.
-  - **K** represents the number of nearest neighbors considered.
-  - **Distance Metric**: Typically Euclidean distance is used, but it can be customized.
 
-You can experiment with different values of **K** to find the best-performing model for this dataset.
+The project uses **K-Nearest Neighbors (KNN)**:
+- Determines a sample's class based on the **majority vote of its K nearest neighbors**.  
+- Uses **Euclidean distance** for measuring proximity.  
+- Users can experiment with different values of **K** for optimal performance.
+
+---
 
 ## Evaluation Metrics
-We use several metrics to evaluate the model’s performance:
-- **Accuracy**: The proportion of correct predictions.
-- **Precision**: The proportion of positive predictions that are actually correct.
-- **Recall**: The proportion of actual positive cases that are correctly identified.
-- **F1-score**: The harmonic mean of precision and recall.
-- **Confusion Matrix**: A table used to describe the performance of a classification model.
 
-## Deployment
-The model has been deployed on **Render Cloud**,
+The model is evaluated using:
+- **Accuracy**: Overall correctness  
+- **Precision**: True positive rate among predicted positives  
+- **Recall**: Percentage of actual diabetics correctly identified  
+- **F1-score**: Harmonic mean of precision & recall  
+- **Confusion Matrix**: Breakdown of correct and incorrect classifications  
 
-### How to Use the Cloud-Deployed API
-You can test the API by sending a POST request with patient data. Below are the steps to test it using **Postman** or any similar tool:
+---
 
+## Deployment  
+
+### Cloud Deployment
+The model is deployed on **Render Cloud** with a public API:  
+API documentation:  
+[https://machine-learning-1-yl7v.onrender.com/docs](https://machine-learning-1-yl7v.onrender.com/docs)
+
+### API Usage
 #### Using Postman:
-1. Open Postman and create a **new request**.
-2. Set the request type to **POST**.
-3. Enter the API endpoint:
+1. **POST** request to:
    ```
    https://machine-learning-1-yl7v.onrender.com/predict
    ```
-4. In the **Body** section, select **raw** and set the type to **JSON**.
-5. Enter the following JSON data:
+2. **Request Body (JSON format):**
    ```json
    {
      "Pregnancies": 2,
@@ -143,35 +133,29 @@ You can test the API by sending a POST request with patient data. Below are the 
      "Age": 32
    }
    ```
-6. Click **Send**.
-7. The API will return a response with the prediction (0 for no diabetes, 1 for diabetes).
+3. **Response:** `{"prediction": 1}` (1 = Diabetes, 0 = No diabetes)
 
-#### Using cURL:
-Alternatively, you can use cURL in your terminal:
-```
-curl -X POST "https://machine-learning-1-yl7v.onrender.com/predict" -H "Content-Type: application/json" -d '{
-  "Pregnancies": 2,
-  "Glucose": 120,
-  "BloodPressure": 70,
-  "SkinThickness": 25,
-  "Insulin": 90,
-  "BMI": 28.5,
-  "DiabetesPedigreeFunction": 0.5,
-  "Age": 32
-}'
-```
+#### Frontend Application
+A **React-based web app** has been developed for user-friendly interaction with the API. The app can be accessed at:  
+[https://machine-learning-1-yl7v.onrender.com/predict](https://machine-learning-1-yl7v.onrender.com/predict)
+
+---
 
 ## Limitations and Future Improvements
+
 ### Limitations:
-- **Data Imbalance**: The dataset contains more non-diabetic cases than diabetic cases, which may impact model performance.
-- **Feature Constraints**: The dataset does not include lifestyle habits, medication, or detailed family medical history.
+- **Render Cloud Free Tier Delay**: On first request, the API may be slow and show a fetching error. Pressing "Predict" 4-5 times resolves this issue. The issue is due to Render’s free plan limitations; upgrading to a paid version would fix it.  
+- **Data Imbalance**: More non-diabetic cases than diabetic cases, possibly affecting model bias.  
+- **Limited Features**: Does not include lifestyle factors like diet and physical activity.
 
 ### Future Improvements:
-- Experiment with class imbalance techniques (e.g., SMOTE, undersampling).
-- Expand the dataset by incorporating additional features.
-- Experiment with advanced models such as XGBoost or Neural Networks to improve accuracy.
+- Implement **SMOTE (Synthetic Minority Over-sampling)** to balance classes.  
+- Extend dataset with additional health indicators.  
+- Explore more advanced models like **XGBoost** and **Neural Networks**.  
 
-## Acknowledgements
-- **Pima Indians Diabetes Dataset** – Original dataset source.
-- **FastAPI** – Framework used for deploying the model as an API.
+---
+
+## Acknowledgements  
+- **Pima Indians Diabetes Dataset** – Data source.  
+- **FastAPI** – Framework for deploying the machine learning model.  
 
