@@ -137,7 +137,7 @@ API documentation:
 
 #### Frontend Application
 A **React-based web app** has been developed for user-friendly interaction with the API. The app can be accessed at:  
-[https://machine-learning-1-yl7v.onrender.com/predict](https://machine-learning-1-yl7v.onrender.com/predict)
+[https://machine-learning-1-yl7v.onrender.com/predict](https://ml-t4w1.vercel.app/)
 
 ---
 
